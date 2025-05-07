@@ -1,0 +1,39 @@
+name,calories,protein,carbs,fats,category,meal_type,diet_type,recipe_video,cooking_time,cuisine
+Dal Tadka,250,12,35,8,Main Course,lunch,vegetarian,https://www.youtube.com/watch?v=r9BBNT3vOGw,30 mins,North Indian
+Vegetable Biryani,350,10,55,12,Main Course,lunch,vegetarian,https://www.youtube.com/watch?v=S5Ngh6CFRmc,45 mins,Indian
+Greek Salad,180,8,15,12,Salad,lunch,vegetarian,https://www.youtube.com/watch?v=dDhOpHcAJGo,15 mins,Mediterranean
+Shakshuka,280,16,20,15,Breakfast,breakfast,vegetarian,https://www.youtube.com/shorts/NVP33kbKxJY,25 mins,Middle Eastern
+Tofu Stir Fry,220,15,25,10,Main Course,dinner,vegetarian,https://www.youtube.com/shorts/UpCKEtS_1-Q,20 mins,Asian Fusion
+Oats Upma,200,8,30,5,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=LDFbvgzaE04,15 mins,Indian Fusion
+Quinoa Upma,220,8,32,6,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=TheFoodieQuinoaUpma,20 mins,Indian Fusion
+Almond Milk Quinoa Porridge,240,10,35,8,Breakfast,breakfast,vegan,https://www.youtube.com/watch?v=WjiM7jxadmY,25 mins,International
+Sprouted Moong Chilla,180,12,25,4,Breakfast,breakfast,vegetarian,https://www.youtube.com/shorts/zqjaev7_qhE,20 mins,North Indian
+Mediterranean Chickpea Bowl,320,15,45,12,Main Course,lunch,vegan,https://www.youtube.com/watch?v=yjaABUYnn6Q,25 mins,Mediterranean
+Grilled Salmon with Quinoa,420,35,30,18,Main Course,dinner,non-vegetarian,https://www.youtube.com/shorts/coKDo0D8xZY,30 mins,Mediterranean
+Lentil and Spinach Soup,250,14,40,6,Soup,dinner,vegan,https://www.youtube.com/watch?v=SpainOnAForkSoup,35 mins,Middle Eastern
+Thai Drunken Noodles,497,17,74,14,Main Course,dinner,non-vegetarian,https://www.youtube.com/watch?v=LyYBUsAhUUU,45 mins,Thai
+Korean Style Pulled Pork Bowl,450,37,46,29,Main Course,lunch,non-vegetarian,https://www.youtube.com/watch?v=NBM8SaGmdZE,40 mins,Korean
+Mango Chicken with Coconut Sauce,552,28,46,28,Main Course,dinner,non-vegetarian,https://www.youtube.com/watch?v=qODDlJk78vA,50 mins,Thai Fusion
+Mediterranean Vegetable Stew,280,15,45,8,Main Course,dinner,vegan,https://www.youtube.com/watch?v=xqezhpsHDXo,45 mins,Mediterranean
+Tofu Paneer Bhurji,250,20,15,12,Main Course,breakfast,vegetarian,https://www.youtube.com/shorts/W5abj3LJiQw,25 mins,Indian Fusion
+Quinoa Black Bean Bowl,320,16,53,8,Main Course,lunch,vegan,https://www.youtube.com/shorts/_q5718-kc1Y,30 mins,Mediterranean
+High Protein Acai Bowl,473,39,82,15,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=ProteinChefAcai,10 mins,International
+Protein Overnight Oats,350,27,45,12,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=NeBf5ewmI0A,5 mins,International
+Berry Protein Smoothie Bowl,320,25,40,8,Breakfast,breakfast,vegetarian,https://www.youtube.com/shorts/6FpUkoa001U,10 mins,International
+Chocolate Chia Seed Pudding,197,8,22,10,Dessert,snack,vegan,https://www.youtube.com/watch?v=MinimalistBakerChia,5 mins,International
+Protein Peanut Butter Cups,250,13,15,18,Dessert,snack,vegetarian,https://www.youtube.com/watch?v=HealthyFitnessMealsCups,20 mins,International
+Maple Vanilla Protein Fudge,180,10,12,12,Dessert,snack,vegetarian,https://www.youtube.com/watch?v=HonourSystemFudge,15 mins,International
+Butter Chicken,450,25,15,30,Main Course,dinner,non-vegetarian,https://www.youtube.com/watch?v=SanjeevKapoorButterChicken,40 mins,North Indian
+Dal Makhani,350,15,45,12,Main Course,lunch,vegetarian,https://www.youtube.com/watch?v=ca51e7nMI2g,45 mins,North Indian
+Paneer Butter Masala,400,18,20,28,Main Course,dinner,vegetarian,https://www.youtube.com/watch?v=bUounn_Bmy4,35 mins,North Indian
+Masala Dosa,250,8,45,6,Breakfast,breakfast,vegetarian,https://www.youtube.com/shorts/2TwHWU5Ydg8,30 mins,South Indian
+Chicken Biryani,550,28,65,22,Main Course,lunch,non-vegetarian,https://www.youtube.com/watch?v=uygb9O-MDPw,50 mins,Indian
+Fish Curry,320,24,12,18,Main Course,lunch,non-vegetarian,https://www.youtube.com/watch?v=SanjeevKapoorFish,35 mins,South Indian
+Chicken Tikka,380,32,8,20,Appetizer,dinner,non-vegetarian,https://www.youtube.com/watch?v=TXu10SDxyRY,45 mins,North Indian
+Idli Sambar,180,6,35,2,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=_QLLo1b5Zcw,25 mins,South Indian
+Aloo Paratha,300,8,52,8,Breakfast,breakfast,vegetarian,https://www.youtube.com/watch?v=HebbarsKitchenParatha,30 mins,North Indian
+Chole Bhature,450,14,65,18,Main Course,lunch,vegetarian,https://www.youtube.com/watch?v=ckTF017vebE,40 mins,North Indian
+Teriyaki Tofu,280,20,25,15,Main Course,dinner,vegan,https://www.youtube.com/shorts/djw5sRrKeaA,30 mins,Asian Fusion
+Crispy Tofu Fish Fillets,300,25,20,12,Main Course,dinner,vegan,https://www.youtube.com/shorts/GS-p3Zt9z4c,35 mins,International
+Chicken Paillard,420,42,10,25,Main Course,dinner,non-vegetarian,https://www.youtube.com/watch?v=b9ZuXbzubMU,25 mins,French
+Spice-Rubbed Chicken Lettuce Cups,350,40,8,18,Main Course,lunch,non-vegetarian,https://www.youtube.com/watch?v=6pf-jo4XD7I,20 mins,Asian Fusion

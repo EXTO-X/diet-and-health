@@ -1,0 +1,18 @@
+name,category,location,calories_burned,difficulty,target_muscles,equipment_needed,exercise_video
+Barbell Bench Press,Strength,gym,150,intermediate,"chest, shoulders, triceps","barbell, bench",https://www.youtube.com/watch?v=vcBig73ojpE
+Deadlift,Strength,gym,180,intermediate,"back, glutes, hamstrings",barbell,https://www.youtube.com/watch?v=1ZXobu7JvvE
+Squats,Strength,gym,160,intermediate,"quads, glutes, core",barbell,https://www.youtube.com/watch?v=YaXPRqUwItQ
+Push-ups,Strength,indoor,100,beginner,"chest, triceps, shoulders",none,https://www.youtube.com/watch?v=IODxDxX7oi4
+Pull-ups,Strength,gym,120,advanced,"back, biceps, shoulders",pull-up bar,https://www.youtube.com/watch?v=eGo4IYlbE5g
+Downward Facing Dog,Yoga,indoor,50,beginner,"shoulders, hamstrings, calves",yoga mat,https://www.youtube.com/watch?v=EC7RGJ975iM
+Warrior I Pose,Yoga,indoor,45,beginner,"hips, thighs, shoulders",yoga mat,https://www.youtube.com/watch?v=k4qaVoAbeHM
+Child's Pose,Yoga,indoor,30,beginner,"back, hips, shoulders",yoga mat,https://www.youtube.com/watch?v=eqVMAPM0O7g
+Triangle Pose,Yoga,indoor,40,intermediate,"hips, spine, shoulders",yoga mat,https://www.youtube.com/watch?v=upFYdXZjXPw
+Sun Salutation,Yoga,indoor,60,beginner,full body,yoga mat,https://www.youtube.com/watch?v=73sjOu0g58M
+Plank,Strength,indoor,100,beginner,"core, shoulders, back",none,https://www.youtube.com/watch?v=pSHjTRCQxIw
+Dumbbell Shoulder Press,Strength,gym,140,intermediate,"shoulders, triceps",dumbbells,https://www.youtube.com/watch?v=qEwKCR5JCog
+Lunges,Strength,indoor,120,beginner,"quads, glutes, hamstrings",none,https://www.youtube.com/watch?v=QOVaHwm-Q6U
+Treadmill Running,Cardio,gym,300,intermediate,"legs, core",treadmill,https://www.youtube.com/watch?v=kE7RQCgDFxg
+Stationary Cycling,Cardio,gym,250,beginner,"legs, core",stationary bike,https://www.youtube.com/watch?v=RpgUTaE_Fxw
+Jump Rope,Cardio,indoor,200,intermediate,full body,jump rope,https://www.youtube.com/watch?v=FJmRQ5iTXKE
+Burpees,Cardio,indoor,150,advanced,full body,none,https://www.youtube.com/watch?v=dZgVxmf6jkA
