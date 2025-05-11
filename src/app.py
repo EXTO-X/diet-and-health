@@ -4,14 +4,17 @@ from model.trainer import DietExerciseRecommender
 import plotly.express as px
 import os
 
-# Get absolute paths
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-data_dir = os.path.join(base_dir, 'data')
-models_dir = os.path.join(base_dir, 'models')
+# Get paths from secrets or use defaults
+data_dir = st.secrets.get("paths", {}).get("data_dir", "data")
+models_dir = st.secrets.get("paths", {}).get("models_dir", "models")
 
-# Load the datasets first
-food_df = pd.read_csv(os.path.join(data_dir, 'food_data.csv'))
-exercise_df = pd.read_csv(os.path.join(data_dir, 'exercise_data.csv'))
+# Load the datasets with error handling
+try:
+    food_df = pd.read_csv(os.path.join(data_dir, 'food_data.csv'))
+    exercise_df = pd.read_csv(os.path.join(data_dir, 'exercise_data.csv'))
+except Exception as e:
+    st.error(f"Error loading data: {str(e)}. Please check if data files exist in the correct location.")
+    st.stop()
 
 # Create models directory if it doesn't exist
 os.makedirs(models_dir, exist_ok=True)
@@ -22,16 +25,20 @@ try:
         os.path.join(models_dir, 'food_model.pkl'),
         os.path.join(models_dir, 'exercise_model.pkl')
     )
-    print("Successfully loaded existing models")
+    st.success("Successfully loaded existing models")
 except Exception as e:
-    print(f"Error loading models: {str(e)}. Training new models...")
-    recommender = DietExerciseRecommender()
-    recommender.train(food_df, exercise_df)
-    recommender.save_models(
-        os.path.join(models_dir, 'food_model.pkl'),
-        os.path.join(models_dir, 'exercise_model.pkl')
-    )
-    print("Successfully trained and saved new models")
+    st.warning(f"Training new models...")
+    try:
+        recommender = DietExerciseRecommender()
+        recommender.train(food_df, exercise_df)
+        recommender.save_models(
+            os.path.join(models_dir, 'food_model.pkl'),
+            os.path.join(models_dir, 'exercise_model.pkl')
+        )
+        st.success("Successfully trained and saved new models")
+    except Exception as e:
+        st.error(f"Error training models: {str(e)}")
+        st.stop()
 
 st.set_page_config(
     page_title='Indian Diet & Exercise Planner',
