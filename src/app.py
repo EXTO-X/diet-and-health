@@ -9,15 +9,29 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 data_dir = os.path.join(base_dir, 'data')
 models_dir = os.path.join(base_dir, 'models')
 
-# Load the trained models
-recommender = DietExerciseRecommender.load_models(
-    os.path.join(models_dir, 'food_model.pkl'),
-    os.path.join(models_dir, 'exercise_model.pkl')
-)
-
-# Load the datasets
+# Load the datasets first
 food_df = pd.read_csv(os.path.join(data_dir, 'food_data.csv'))
 exercise_df = pd.read_csv(os.path.join(data_dir, 'exercise_data.csv'))
+
+# Create models directory if it doesn't exist
+os.makedirs(models_dir, exist_ok=True)
+
+# Try to load models, retrain if loading fails
+try:
+    recommender = DietExerciseRecommender.load_models(
+        os.path.join(models_dir, 'food_model.pkl'),
+        os.path.join(models_dir, 'exercise_model.pkl')
+    )
+    print("Successfully loaded existing models")
+except Exception as e:
+    print(f"Error loading models: {str(e)}. Training new models...")
+    recommender = DietExerciseRecommender()
+    recommender.train(food_df, exercise_df)
+    recommender.save_models(
+        os.path.join(models_dir, 'food_model.pkl'),
+        os.path.join(models_dir, 'exercise_model.pkl')
+    )
+    print("Successfully trained and saved new models")
 
 st.set_page_config(
     page_title='Indian Diet & Exercise Planner',
