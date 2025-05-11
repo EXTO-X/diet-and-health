@@ -403,23 +403,25 @@ with tabs[1]:
                 
                 # Filter exercises based on fitness goals
                 goal_exercise_map = {
-                    'weight loss': ['Cardio', 'HIIT'],
-                    'muscle gain': ['Strength'],
-                    'endurance': ['Cardio', 'HIIT'],
-                    'flexibility': ['Yoga', 'Stretching'],
-                    'strength': ['Strength', 'Bodyweight'],
-                    'general fitness': ['Cardio', 'Strength', 'Yoga']
+                    'weight loss': ['Cardio', 'HIIT', 'Strength'],
+                    'muscle gain': ['Strength', 'HIIT'],
+                    'endurance': ['Cardio', 'HIIT', 'Strength'],
+                    'flexibility': ['Yoga', 'Stretching', 'Breathing'],
+                    'strength': ['Strength', 'Bodyweight', 'Yoga'],
+                    'general fitness': ['Cardio', 'Strength', 'Yoga', 'Breathing']
                 }
                 
                 recommended_categories = set()
                 for goal in fitness_goals:
                     recommended_categories.update(goal_exercise_map.get(goal, []))
+                if not recommended_categories:  # If no categories selected, include all
+                    recommended_categories = set(['Cardio', 'Strength', 'Yoga', 'HIIT', 'Breathing'])
                 
                 # Get exercise recommendations based on user's preferred locations
                 if 'indoor' in exercise_location:
                     yoga_df = exercise_df[
-                        (exercise_df['category'] == 'Yoga') & 
-                        (exercise_df['location'] == 'indoor')
+                        (exercise_df['category'].isin(['Yoga', 'Breathing'])) & 
+                        (exercise_df['location'].isin(['indoor', 'any']))
                     ]
                     if not yoga_df.empty:
                         yoga_df_intensity = yoga_df[yoga_df['difficulty'] == workout_intensity]
@@ -430,13 +432,13 @@ with tabs[1]:
                     morning_yoga = None
                 
                 # Different exercises for each day based on user's preferred locations
-                if 'gym' in exercise_location:
+                if 'gym' in exercise_location or 'indoor' in exercise_location:
                     if day == 'Monday':
                         # Chest and Triceps Day
                         gym_df = exercise_df[
                             (exercise_df['category'].isin(recommended_categories)) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'].isin(['chest', 'triceps']))
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('chest|triceps', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -447,8 +449,8 @@ with tabs[1]:
                         # Back and Biceps Day
                         gym_df = exercise_df[
                             (exercise_df['category'].isin(recommended_categories)) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'].isin(['back', 'biceps']))
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('back|biceps', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -459,8 +461,8 @@ with tabs[1]:
                         # Legs Day
                         gym_df = exercise_df[
                             (exercise_df['category'].isin(recommended_categories)) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'].isin(['legs', 'calves']))
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('legs|calves|quads|hamstrings', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -471,8 +473,8 @@ with tabs[1]:
                         # Shoulders and Abs Day
                         gym_df = exercise_df[
                             (exercise_df['category'].isin(recommended_categories)) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'].isin(['shoulders', 'abs']))
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('shoulders|abs|core', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -483,8 +485,8 @@ with tabs[1]:
                         # Full Body Day
                         gym_df = exercise_df[
                             (exercise_df['category'].isin(recommended_categories)) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'] == 'full body')
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('full body|compound', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -494,9 +496,9 @@ with tabs[1]:
                     elif day == 'Saturday':
                         # Core and Cardio Day
                         gym_df = exercise_df[
-                            (exercise_df['category'].isin(['Cardio', 'HIIT'])) & 
-                            (exercise_df['location'] == 'gym') & 
-                            (exercise_df['target_muscles'].isin(['core', 'cardio']))
+                            (exercise_df['category'].isin(['Cardio', 'HIIT', 'Strength'])) & 
+                            (exercise_df['location'].isin(['gym', 'indoor', 'any'])) & 
+                            (exercise_df['target_muscles'].str.contains('core|cardio|full body', case=False, na=False))
                         ]
                         if not gym_df.empty:
                             gym_df_intensity = gym_df[gym_df['difficulty'] == workout_intensity]
@@ -509,10 +511,10 @@ with tabs[1]:
                     gym_workout = None
                 
                 # Get outdoor workout recommendations if outdoor location is selected
-                if 'outdoor' in exercise_location:
+                if 'outdoor' in exercise_location or len(exercise_location) == 0:
                     outdoor_df = exercise_df[
                         (exercise_df['category'].isin(recommended_categories)) & 
-                        (exercise_df['location'] == 'outdoor')
+                        (exercise_df['location'].isin(['outdoor', 'any']))
                     ]
                     if not outdoor_df.empty:
                         outdoor_df_intensity = outdoor_df[outdoor_df['difficulty'] == workout_intensity]
@@ -522,18 +524,24 @@ with tabs[1]:
                 else:
                     outdoor_workout = None
                 
-                # Adjust breathing exercises if indoor location is selected
-                if 'indoor' in exercise_location:
+                # Adjust breathing exercises if indoor location is selected or no location specified
+                if 'indoor' in exercise_location or len(exercise_location) == 0:
                     breathing_intensity = 'moderate' if workout_intensity in ['high', 'very high'] else 'low'
                     breathing_df = exercise_df[
-                        (exercise_df['category'] == 'Breathing') & 
-                        (exercise_df['location'] == 'indoor')
+                        (exercise_df['category'].isin(['Breathing', 'Yoga'])) & 
+                        (exercise_df['location'].isin(['indoor', 'any']))
                     ]
                     if not breathing_df.empty:
-                        breathing_df_intensity = breathing_df[breathing_df['difficulty'] == breathing_intensity]
+                        breathing_df_intensity = breathing_df[breathing_df['difficulty'].isin([breathing_intensity, 'beginner'])]
                         evening_breathing = breathing_df_intensity.sample(1).iloc[0] if not breathing_df_intensity.empty else breathing_df.sample(1).iloc[0]
                     else:
-                        evening_breathing = None
+                        # Provide default breathing exercise recommendation
+                        evening_breathing = {
+                            'name': 'Deep Breathing Exercise',
+                            'category': 'Breathing',
+                            'location': 'indoor',
+                            'exercise_video': 'https://www.youtube.com/watch?v=acUZdGd_3Dg'
+                        }
                 else:
                     evening_breathing = None
                 
