@@ -1,4 +1,15 @@
 import streamlit as st
+
+# Set page configuration at the very beginning
+st.set_page_config(
+    page_title='Indian Diet & Exercise Planner',
+    layout='wide',
+    initial_sidebar_state='expanded',
+    menu_items={
+        'About': 'A personalized diet and exercise recommendation system'
+    }
+)
+
 import pandas as pd
 from model.trainer import DietExerciseRecommender
 import plotly.express as px
@@ -40,14 +51,7 @@ except Exception as e:
         st.error(f"Error training models: {str(e)}")
         st.stop()
 
-st.set_page_config(
-    page_title='Indian Diet & Exercise Planner',
-    layout='wide',
-    initial_sidebar_state='expanded',
-    menu_items={
-        'About': 'A personalized diet and exercise recommendation system'
-    }
-)
+# Page configuration is now at the top of the file
 
 # Custom CSS for modern styling
 st.markdown("""
